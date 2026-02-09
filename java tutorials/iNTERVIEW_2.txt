@@ -1,0 +1,173 @@
+Question :1:What is the difference between an abstract class and an interface?
+Question :2:Find kth largest element in an array of unsorted elements?
+Question :3:What is a singleton pattern?Singleton in a parent-child class
+Question :4:Design a traffic signal in java?
+Question :5:Design an emergency landing plane structure where the emergency plane has more priority?
+Question :6:implement an immutable class. What happens when we use a collection inside it?
+Question :7:Kadane Algorithm, find max sum in a subarray
+Question :8:Pole Coloring problem - Given the number of poles and connections between them, color the poles so no two connected poles have the same color 
+Question :9:Collections-Write code to get population counts based on input
+Question :10:GC, Serialization, Reflection, Lambdas
+Question :11:DB - Normalization, Joins, Simple Queries
+Question :12:Inheritance, Polymorphism
+Question :13:Was able to implement enqueue & dequeue methods of queue.
+Question :14:Overriding- static method
+======================================================================================================
+Question :15:Threading
+Q1.   What is a thread?
+
+Thread is a lightweight subprocess. Thread class belongs to java.lang package.Threads have their  own stack.It's a way to take advantage of multiple cpu available in a machine. For example, if one thread takes 50 milliseconds to do a job, you can use 10 threads to reduce that task to 5 milliseconds.
+
+Q2 What is the difference between Thread and Process?
+
+A process can have many threads. Threads can execute any part of process.And same part of Process can be executed by multiple threads.
+
+Processes have their own address while Thread share the address space of the process that created it.
+
+Thread has its own stack while in process all threads share a common system resource like heap memory.
+
+
+Q3 What are the ways to implement Thread in java?
+
+
+There are two ways to implement Thread in java.
+1. By implementing Runnable interface in java and then creating Thread object from it.
+2. By extending the Thread class.
+
+Q4 What are the differences between implementing Runnable and extending Thread while creating a thread in java? Which one is better?
+
+Implementing Runnable is better.
+
+When we implement Runnable interface we can extend any other class as well but if we extends Thread class we can not extends any other class because java does not allow multiple inheritance.
+
+You can find here the detailed answer of difference between implementing Runnable and extends Thread.
+
+Q5 What is  a life cycle of a thread?
+
+When we create a Thread instance in a java program, then its state is new. Then we start the Thread, then it's state changes to Runnable(ready to run but not running yet).Execution of Threads depends upon ThreadScheduler. ThreadScheduler is responsible to allocate CPUs to threads in Runnable thread pool and change their state to Running.Waiting,Blocked and Dead are the remaining states of the Thread.
+
+So in short new,runnable,running.waiting,blocked and dead are the states a Thread can be in.
+
+Q6 What is the difference between sleep and wait method in java?
+
+Wait method releases the lock while sleep method doesn't release the lock.
+Wait method belongs to java.lang.Object class while sleep method belongs to java.lang.Thread class.
+
+You can find the detailed answer here  difference between wait and sleep method in java.
+
+Q7 What is the difference between starting a thread with start() method and run() method? 
+
+This question is a bit tricky and might confuse you as well. The answer is when you call start() method, main method internally calls run() method to start newly created Thread, so run method is ultimately called by newly created Thread.
+When you call run() method, its called in the same thread, no new thread is started which is the case when you call start() method.
+
+Q8 What is the difference between user thread and daemon thread?
+
+When we create a thread in java program, then it is called as user thread. We can not make a user thread to daemon thread if a thread is started.
+
+The daemon threads are the low priority threads that provide the background support to the user threads.It provides services to the user threads. A child thread created from a daemon thread is also a daemon thread.
+
+Q9 How to create a Daemon thread in java?
+
+By setting the setDaemon(true) , we can create a daemon thread in java.
+
+Q10 What is the significance of using volatile keyword?
+
+When we make a variable volatile, then all the threads reads its value directly from the memory and don't cache it. This make sure the shared variables are consistently updated.
+
+volatile is a keyword that can only be used with variables.
+
+Q11 Is it possible to start a thread twice?
+
+No, there is no possibility to start a thread twice. If we do so , then it will throw an Exception.
+
+Q12 What is synchronization?
+
+Synchronization is the capability to control the access of multiple threads to any shared resource.
+The main advantage of synchronization is
+a. to avoid consistency problem
+b. to avoid thread interference
+
+Q13 Which is more preferred - synchronization block or synchronization method?
+
+Synchronized block is the more preferred way because it doesn't lock the object while synchronized methods lock the object. Synchronized method will stop multiple synchronized blocks in the class, even though they are not related, from the execution and put them in the wait state to get the lock on the object.
+
+Q14 Difference and similarities between sleep and yield method?
+
+Sleep method throws the interrupted exception if another thread interrupts the sleeping thread while yield method does not throw the interrupted exception.
+
+Thread.sleep() method does not  cause currently executing thread to give up monitors while yield method gives up the monitor.
+You can find detailed explanation of difference between sleep and yield method in java.
+
+Q15 What is deadlock?
+
+Deadlock is a situation where two threads are waiting for each other to release locks holded by them on resources.For example
+
+Thread 1 : locks resource A, waits for resource B
+Thread 2 : locks resource B, waits for resource A
+
+Q16 Write a program to create a Deadlock in java?
+
+You can find the answer here Program to create a deadlock in java.
+
+Q17 What measures you should take to avoid deadlock?
+
+1. Lock specific member variables of the class rather than locking whole class.
+2. Use join() method, if possible try to use join method ,although it may refrain us from taking full advantage of multithreading environment because threads will start and end sequentially, but it can be handy in avoiding deadlocks.
+3. If possible try to avoid nested synchronization blocks.
+
+Q18 What do you understand by Thread priority?
+
+Every thread has a priority. Its value is int which ranges from 1 to 10 where 1 being the lowest priority and 10 being the highest priority.
+Usually higher priority threads get higher precedence in execution but it depends on the ThreadScheduler implementation which is OS dependent.
+We can specify the priority of thread but it does not guarantee that higher priority thread will get executed before the lower priority thread.
+
+Q19 What is the difference between class lock and object lock?
+
+Threads can acquire object lock by entering synchronized methods.Threads can acquire lock on class's class object by entering the static synchronized methods.
+
+Multiple objects of class may exist and every Object has its own lock.In class lock multiple objects of  class may exist but there is always one class's class object lock available.
+
+Q20 What is the difference between Callable and Runnable?
+
+Callable throws checked exception while Runnable does not throw checked exception.
+
+Return type of Runnable is void that is it does not return any value while Callable can return a Future object.
+You can find the detailed explanation of difference between callable and runnable.
+
+Q21 What is the difference between time slicing and preemptive scheduling?
+
+In preemptive scheduling the higher priority task executes until it enters the waiting or dead states or higher priority task comes into existence. In time slicing, a task runs for a predefined slice of time and then reenters the pool of ready tasks.
+
+Q22 Can a constructor be synchronized?
+
+No, Constructor can not be synchronized.
+
+Q23 What is race condition in java and how we can solve it?
+
+When more than one thread try to access same resource without synchronization causes race condition.
+We can solve race condition by using a synchronized block or synchronized method.
+
+Q24 How threads communicate with each other?
+
+Threads can communicate with each other using wait(), notify(), notifyAll() methods.
+
+Q25 Why wait(), notify() and notifyAll() method have to be called from the synchronized context?
+
+When a Thread calls wait() on any Object, it must have the monitor on Object that it will leave and goes in wait state until any other Thread call notify() on this Object. Similarly when a thread calls notify() on any Object, it leaves the monitor on the Object and other waiting threads can get the monitor on the Object. Since all these threads require Thread to have a Object monitor,that can be achieved only by synchronization.That is why wait(),notify() and notifyAll() method have to be called from the synchronized context.
+
+Q26 What is ThreadLocal variable in java?
+
+ThreadLocal can be used to create ThreadLocal variables. We know that all threads of an Object shares its variables.So if the variable is not thread safe then we can use synchronization. If we want to avoid synchronization then we can use ThreadLocal variables.
+Each thread has its own ThreadLocal variable and they can use it's get() and set() methods to get the default value or change its value local to Thread.
+
+Q27 What is Threadpool?
+
+Threadpool  manages the pool of worker threads. There is a queue in which the tasks are keep waiting for execution.
+
+Q28 Can you find whether thread holds lock() on an object or not?
+
+holdsLock(Object) method can be used to determine whether current thread holds the lock on monitor of specified object.
+The method holdsLock(Object) returns true if the thread holds lock or monitor of the specified object.
+
+======================================================================================================
+
